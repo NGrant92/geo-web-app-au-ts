@@ -44,6 +44,7 @@ export default class Fixtures {
       latitude: 52.2462,
       longitude: 7.1202,
       description: "under the busted half pipe",
+      owner: this.users[2],
     },
     {
       name: "A cache for moms",
@@ -51,6 +52,7 @@ export default class Fixtures {
       latitude: 52.2462,
       longitude: 2.1202,
       description: "Under the baby's slide. Just don't keep your kid waiting at the top as you look for it",
+      owner: this.users[1],
     },
     {
       name: "The ole watering hole",
@@ -58,6 +60,7 @@ export default class Fixtures {
       latitude: 52.2462,
       longitude: 0.1202,
       description: "Under Barney",
+      owner: this.users[0],
     },
     {
       name: "Home run",
@@ -65,6 +68,7 @@ export default class Fixtures {
       latitude: 52.2462,
       longitude: 10.1202,
       description: "First base!",
+      owner: this.users[0],
     },
     {
       name: "Our founder",
@@ -72,6 +76,7 @@ export default class Fixtures {
       latitude: 52.2462,
       longitude: 15.1202,
       description: "Under his foot",
+      owner: this.users[2],
     },
   ];
 }
