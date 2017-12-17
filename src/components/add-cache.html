@@ -1,0 +1,17 @@
+<template>
+  <form submit.trigger="addCache()" class="ui form stacked segment">
+    <h3 class='ui dividing header'> Make Cache </h3>
+    <div class="grouped inline fields">
+      <div class="field">
+        <label>Name</label> <input type="string" value.bind="name">
+      </div>
+      <div class="field">
+        <label>Location</label> <input type="string" value.bind="location">
+      </div>
+      <div class="field">
+        <label>Description</label> <input type="string" value.bind="description">
+      </div>
+    </div>
+    <button class="ui blue submit button"><i class="edit icon"></i>Add Cache</button>
+  </form>
+</template>
