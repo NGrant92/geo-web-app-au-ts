@@ -73,9 +73,11 @@ export class GeoService{
       loginStatus.loginMessage = 'Unregistered email';
     }
     this.ea.publish(loginStatus);
+    console.log(`User logged in`);
   }
 
   logout(){
     this.ea.publish(new LoginStatus(false));
+    console.log(`User logged out`);
   }
 }
