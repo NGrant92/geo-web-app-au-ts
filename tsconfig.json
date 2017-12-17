@@ -24,5 +24,8 @@
   ],
   "atom": {
     "rewriteTsconfig": false
-  }
+  },
+  "include": [
+    "./src/**/*.ts"
+  ]
 }
