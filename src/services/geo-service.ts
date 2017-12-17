@@ -1,6 +1,7 @@
 import { inject } from 'aurelia-framework';
 import Fixtures from './fixtures';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import { LoginStatus } from './messages';
 import { Cache, MessagePost, User } from "./models";
 
 @inject(Fixtures, EventAggregator)
@@ -53,5 +54,28 @@ export class GeoService{
 
     this.users.set(newEmail, newUser);
     console.log(`${newFirstName} ${newLastName} added successfully`);
+  }
+
+  login(email: string, password: string){
+    const loginStatus = new LoginStatus(false);
+    const user = this.users.get(email);
+
+    if (user){
+      if (user.password === password){
+        loginStatus.status = true;
+        loginStatus.loginMessage = 'logged in';
+      }
+      else {
+        loginStatus.loginMessage = 'Incorrect Password';
+      }
+    }
+    else {
+      loginStatus.loginMessage = 'Unregistered email';
+    }
+    this.ea.publish(loginStatus);
+  }
+
+  logout(){
+    this.ea.publish(new LoginStatus(false));
   }
 }
