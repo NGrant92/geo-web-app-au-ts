@@ -14,11 +14,6 @@ export class Signup {
     this.geoService = gs;
   }
 
-  login(e) {
-    console.log(`Trying to log in ${this.email}`);
-    this.geoService.login(this.email, this.password);
-  }
-
   register(e) {
     this.geoService.addUser(
       this.firstName,
