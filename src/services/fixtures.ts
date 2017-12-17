@@ -37,6 +37,29 @@ export default class Fixtures {
       admin: true,
     });
 
+  messagePosts: Array<MessagePost> = [
+    {
+      message: "Sweet! found one under the jebediah statue!",
+      owner: this.users[2],
+    },
+    {
+      message: "Oh! a cache in the baseball park",
+      owner: this.users[1],
+    },
+    {
+      message: "Woohoo! found a cache with maggie in the park!",
+      owner: this.users[0],
+    },
+    {
+      message: "Bart showed me his one by the skatepark, neat!",
+      owner: this.users[0],
+    },
+    {
+      message: "Thought I found a brand new cache on Jebediah's statue. Forgot it was mine... D'OH >.<",
+      owner: this.users[0],
+    },
+  ];
+
   caches: Array<Cache> = [
     {
       name: "Skatepark Cache",
