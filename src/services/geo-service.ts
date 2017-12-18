@@ -1,21 +1,25 @@
 import { inject } from 'aurelia-framework';
 import Fixtures from './fixtures';
+import AsyncHttpClient from './async-http-client';
+
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { LoginStatus } from './messages';
 import { Cache, MessagePost, User } from "./models";
 
-@inject(Fixtures, EventAggregator)
+@inject(Fixtures, EventAggregator, AsyncHttpClient)
 export class GeoService{
   ea: EventAggregator;
+  ac: AsyncHttpClient;
   users: Map<string, User>;
   caches: Array<Cache> = [];
   messagePosts: Array<MessagePost> = [];
 
-  constructor(data: Fixtures, ea: EventAggregator){
-    this.users = data.users;
-    this.caches = data.caches;
-    this.messagePosts = data.messagePosts;
+  constructor(data: Fixtures, ea: EventAggregator, ac: AsyncHttpClient){
     this.ea = ea;
+    this.ac = ac;
+    this.getUsers();
+    // this.getCaches();
+    // this.getMessagePosts();
   }
 
   addMessage(newMessage: string, newOwner: User){
