@@ -18,8 +18,29 @@ export class GeoService{
     this.ea = ea;
     this.ac = ac;
     this.getUsers();
-    // this.getCaches();
-    // this.getMessagePosts();
+    this.getCaches();
+    this.getMessagePosts();
+  }
+
+  getUsers() {
+    this.ac.get('/api/users').then(res => {
+      const users = res.content as Array<User>;
+      users.forEach(user => {
+        this.users.set(user.email.toString(), user);
+      });
+    });
+  }
+
+  getCaches(){
+    this.ac.get('/api/caches').then(res => {
+      this.caches = res.content;
+    });
+  }
+
+  getMessagePosts(){
+    this.ac.get('api/messages').then(res => {
+      this.messagePosts = res.content;
+    })
   }
 
   addMessage(newMessage: string, newOwner: User){
