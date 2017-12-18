@@ -8,7 +8,7 @@ export class Home {
       {
         route: ['', 'home'],
         name: 'geo',
-        moduleId: 'components/add-cache',
+        moduleId: 'components/dashboard',
         nav: true,
         title: 'Home',
       },
