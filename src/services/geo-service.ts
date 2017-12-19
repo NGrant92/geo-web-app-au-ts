@@ -58,9 +58,6 @@ export class GeoService {
       .catch(err => {
         console.log(err);
       });
-
-    this.messagePosts.push(newMessagePost);
-    console.log(`${newMessage} added successfully`);
   }
 
   addCache(newName: string, newLocation: string, newLat: Number, newLong: Number, newDesc: string) {
@@ -70,7 +67,6 @@ export class GeoService {
       latitude: newLat,
       longitude: newLong,
       description: newDesc,
-      user: this.users.get('homer@simpson.com')._id
     };
 
     this.ac
