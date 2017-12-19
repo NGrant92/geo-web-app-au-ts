@@ -102,26 +102,16 @@ export class GeoService {
   }
 
   login(email: string, password: string) {
-    const loginStatus = new LoginStatus(false);
-    const user = this.users.get(email);
-
-    if (user) {
-      if (user.password === password) {
-        loginStatus.status = true;
-        loginStatus.loginMessage = "logged in";
-      }
-      else {
-        loginStatus.loginMessage = "Incorrect Password";
-      }
-    }
-    else {
-      loginStatus.loginMessage = "Unregistered email";
-    }
-    this.ea.publish(loginStatus);
+    const user = {
+      email: email,
+      password: password
+    };
+    this.ac.authenticate('/api/users/authenticate', user);
     console.log(`User logged in`);
   }
 
   logout() {
+    this.ac.clearAuthentication();
     this.ea.publish(new LoginStatus(false));
     console.log(`User logged out`);
   }
