@@ -94,8 +94,15 @@ export class GeoService {
       admin: false
     };
 
-    this.users.set(newEmail, newUser);
-    console.log(`${newFirstName} ${newLastName} added successfully`);
+    this.ac
+      .post('/api/users', newUser)
+      .then(res => {
+        this.getUsers();
+        console.log(`${newFirstName} ${newLastName} added successfully`);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   login(email: string, password: string) {
