@@ -2,12 +2,18 @@ import { inject, Aurelia } from 'aurelia-framework';
 import { RouterConfiguration, Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { LoginStatus } from './services/messages';
+import { GeoService } from './services/geo-service';
 
-@inject(Aurelia, EventAggregator)
+@inject(Aurelia, EventAggregator, GeoService)
 export class App {
   router: Router;
+  au: Aurelia;
+  gs: GeoService;
 
-  constructor(au: Aurelia, ea: EventAggregator) {
+  constructor(au: Aurelia, ea: EventAggregator, gs: GeoService) {
+    this.au = au;
+    this.gs = gs;
+
     ea.subscribe(LoginStatus, msg => {
       this.router.navigate('/', { replace: true, trigger: false });
       this.router.reset();
@@ -38,5 +44,13 @@ export class App {
       },
     ]);
     this.router = router;
+  }
+
+  attached() {
+    if (this.gs.isAuthenticated()) {
+      this.au.setRoot('home').then(() => {
+        this.router.navigateToRoute('dashboard');
+      });
+    }
   }
 }
