@@ -70,7 +70,7 @@ export class GeoService {
       latitude: newLat,
       longitude: newLong,
       description: newDesc,
-      owner: this.users[0]
+      user: this.users.get('homer@simpson.com')._id
     };
 
     this.ac
