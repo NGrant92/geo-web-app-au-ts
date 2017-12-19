@@ -36,6 +36,7 @@ export default class AsyncHttpClient {
       .then(response => {
         const status = response.content;
         if (status.success) {
+          localStorage.geo = JSON.stringify(response.content);
           this.http.configure(configuration => {
             configuration.withHeader(
               'Authorization',
@@ -50,7 +51,20 @@ export default class AsyncHttpClient {
       });
   }
 
+  isAuthenticated() {
+    let authenticated = false;
+    if (localStorage.geo !== 'null') {
+      authenticated = true;
+      this.http.configure(http => {
+        const auth = JSON.parse(localStorage.geo);
+        http.withHeader('Authorization', 'bearer ' + auth.token);
+      });
+    }
+    return authenticated;
+  }
+
   clearAuthentication() {
+    localStorage.geo = null;
     this.http.configure(configuration => {
       configuration.withHeader('Authorization', '');
     });

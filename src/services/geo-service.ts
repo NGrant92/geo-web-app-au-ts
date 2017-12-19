@@ -17,9 +17,9 @@ export class GeoService {
   constructor(data: Fixtures, ea: EventAggregator, ac: AsyncHttpClient) {
     this.ea = ea;
     this.ac = ac;
-    this.getUsers();
-    this.getCaches();
-    this.getMessagePosts();
+    // this.getUsers();
+    // this.getCaches();
+    // this.getMessagePosts();
   }
 
   getUsers() {
@@ -104,10 +104,14 @@ export class GeoService {
   login(email: string, password: string) {
     const user = {
       email: email,
-      password: password
+      password: password,
     };
     this.ac.authenticate('/api/users/authenticate', user);
     console.log(`User logged in`);
+  }
+
+  isAuthenticated() {
+    return this.ac.isAuthenticated();
   }
 
   logout() {
