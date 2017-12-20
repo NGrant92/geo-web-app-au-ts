@@ -9,5 +9,6 @@ export class ProfileCard{
 
   constructor(gs){
     this.geoService = gs;
+    this.geoService.getLoggedUser();
   }
 }

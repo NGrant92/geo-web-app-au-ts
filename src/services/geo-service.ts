@@ -11,6 +11,7 @@ export class GeoService {
   ea: EventAggregator;
   ac: AsyncHttpClient;
   users: Map<string, User> = new Map();
+  currUser: User;
   caches: Array<Cache> = [];
   messagePosts: Array<MessagePost> = [];
 
@@ -20,6 +21,15 @@ export class GeoService {
     // this.getUsers();
     // this.getCaches();
     // this.getMessagePosts();
+  }
+
+  getLoggedUser(){
+    this.ac.get("/api/users/current").then(res => {
+      console.log("got logged uer");
+      console.log(res.content.firstName);
+      this.currUser = res.content;
+      console.log(this.currUser.firstName);
+    });
   }
 
   getUsers() {
