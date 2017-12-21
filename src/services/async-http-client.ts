@@ -2,7 +2,6 @@ import { inject } from "aurelia-framework";
 import { HttpClient } from "aurelia-http-client";
 import { EventAggregator } from "aurelia-event-aggregator";
 import { LoginStatus } from './messages';
-import { User } from './models';
 import Fixtures from "./fixtures";
 
 @inject(HttpClient, Fixtures, EventAggregator)

@@ -26,9 +26,7 @@ export class GeoService {
   getLoggedUser(){
     this.ac.get("/api/users/current").then(res => {
       console.log("got logged uer");
-      console.log(res.content.firstName);
-      this.currUser = res.content;
-      console.log(this.currUser.firstName);
+      this.currUser = res.content as User;
     });
   }
 
@@ -117,11 +115,17 @@ export class GeoService {
       password: password,
     };
     this.ac.authenticate('/api/users/authenticate', user);
+    this.getLoggedUser();
     console.log(`User logged in`);
   }
 
   isAuthenticated() {
-    return this.ac.isAuthenticated();
+    const isAuth = this.ac.isAuthenticated();
+    console.log(isAuth);
+    if(isAuth){
+      this.getLoggedUser();
+    }
+    return isAuth;
   }
 
   logout() {
