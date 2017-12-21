@@ -52,7 +52,7 @@ export default class AsyncHttpClient {
 
   isAuthenticated() {
     let authenticated = false;
-    if (localStorage.geo !== 'null') {
+    if ("geo" in localStorage && localStorage.geo !== 'null') {
       authenticated = true;
       this.http.configure(http => {
         const auth = JSON.parse(localStorage.geo);

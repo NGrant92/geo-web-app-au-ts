@@ -53,10 +53,9 @@ export class GeoService {
     });
   }
 
-  addMessagePost(newMessage: string, newOwner: User) {
+  addMessagePost(newMessage: string) {
     const newMessagePost = {
-      message: newMessage,
-      owner: newOwner
+      message: newMessage
     };
 
     this.ac
