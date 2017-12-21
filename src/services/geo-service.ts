@@ -18,9 +18,11 @@ export class GeoService {
   constructor(data: Fixtures, ea: EventAggregator, ac: AsyncHttpClient) {
     this.ea = ea;
     this.ac = ac;
-    // this.getUsers();
-    // this.getCaches();
-    // this.getMessagePosts();
+
+    //For when app is reloading
+    if(this.isAuthenticated()){
+      this.getLoggedUser();
+    }
   }
 
   getLoggedUser(){
@@ -121,7 +123,6 @@ export class GeoService {
 
   isAuthenticated() {
     const isAuth = this.ac.isAuthenticated();
-    console.log(isAuth);
     if(isAuth){
       this.getLoggedUser();
     }
