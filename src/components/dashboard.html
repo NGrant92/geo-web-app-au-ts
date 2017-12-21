@@ -5,7 +5,7 @@
     </div>
 
     <div class = "eight wide align right column" >
-      <section class="ui segment" id="timelineTabs" style="overflow:auto;max-height:1200px;min-height:200px;">
+      <section class="ui segment" id="postTabs" style="overflow:auto;max-height:1200px;min-height:200px;">
         <h3 class="ui dividing header">Post New Stuff!</h3>
         <div class="ui pointing secondary demo menu">
           <a class="active item" data-tab="postfirst"><i class="plus icon"></i>Cache</a>
@@ -19,6 +19,27 @@
         </div>
       </section>
       <div class="four wide column">
+        <section class="ui segment" id="timelineTabs" style="overflow:auto;max-height:1200px;min-height:200px;">
+          <h3 class="ui dividing header">Timeline</h3>
+          <div class="ui pointing secondary demo menu">
+            <a class="active item" data-tab="timelinefirst"><i class="users icon"></i>Messages</a>
+            <a class="item" data-tab="timelinesecond"><i class="user icon"></i>My Messages</a>
+            <a class="item" data-tab="timelinethird"><i class="marker icon"></i>Caches</a>
+            <a class="item" data-tab="timelinefourth"><i class="marker icon"></i>My caches</a>
+          </div>
+          <div class="ui active tab" data-tab="timelinefirst" style="padding: 10px;">
+            <compose view-model=""></compose>
+          </div>
+          <div class="ui tab" data-tab="timelinesecond" style="padding: 10px;">
+            <compose view-model=""></compose>
+          </div>
+          <div class="ui tab" data-tab="timelinethird" style="padding: 10px;">
+            <compose view-model=""></compose>
+          </div>
+          <div class="ui tab" data-tab="timelinefourth" style="padding: 10px;">
+            <compose view-model=""></compose>
+          </div>
+        </section>
       </div>
     </div>
   </div>
