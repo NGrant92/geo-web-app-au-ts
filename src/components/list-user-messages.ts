@@ -5,10 +5,15 @@ import { MessagePost } from "../services/models";
 @inject(GeoService)
 export class ListUserMessages {
   geoService: GeoService;
-  userMessagePosts: Array<MessagePost>;
+  userMessagePosts: Array<MessagePost> = [];
 
   constructor(gs: GeoService) {
     this.geoService = gs;
-    this.userMessagePosts = this.geoService.messagePosts;
+
+    this.geoService.messagePosts.forEach(post => {
+      if(post.user._id === this.geoService.currUser._id){
+        this.userMessagePosts.push(post);
+      }
+    });
   }
 }
