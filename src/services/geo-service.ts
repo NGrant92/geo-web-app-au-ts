@@ -50,7 +50,7 @@ export class GeoService {
   getMessagePosts() {
     this.ac.get("/api/messages").then(res => {
       this.messagePosts = res.content;
-      console.log("getMessagePosts()[0].user: " + this.messagePosts[0].user)
+      console.log("messages retrieved")
     });
   }
 

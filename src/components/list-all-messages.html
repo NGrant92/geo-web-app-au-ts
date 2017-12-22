@@ -1,5 +1,5 @@
 <template>
-  <div class="ui segment" repeat.for="post of messagePosts">
+  <div class="ui segment" repeat.for="post of allMessagePosts">
     <div class="five wide item">
       <img class="ui two wide avatar image" src=${post.user.img}/>
       <a class="Header"> ${post.user.firstName} ${post.user.lastName}</a>
