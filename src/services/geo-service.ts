@@ -20,16 +20,16 @@ export class GeoService {
     this.ac = ac;
 
     //For when app is reloading
-    if(this.isAuthenticated()){
-      this.getLoggedUser();
-    }
+    // if(this.isAuthenticated()){
+    //   this.getLoggedUser();
+    // }
   }
 
   getLoggedUser(){
-    this.ac.get("/api/users/current").then(res => {
-      console.log("got logged uer");
-      this.currUser = res.content as User;
-    });
+      this.ac.get("/api/users/current").then(res => {
+        console.log("got logged uer");
+        this.currUser = res.content as User;
+      });
   }
 
   getUsers() {
@@ -49,8 +49,8 @@ export class GeoService {
 
   getMessagePosts() {
     this.ac.get("/api/messages").then(res => {
-      this.messagePosts = res.content as Array<MessagePost>;
-      console.log(this.messagePosts[0].user.toString());
+      this.messagePosts = res.content;
+      console.log("getMessagePosts()[0].user: " + this.messagePosts[0].user)
     });
   }
 
@@ -123,9 +123,9 @@ export class GeoService {
 
   isAuthenticated() {
     const isAuth = this.ac.isAuthenticated();
-    if(isAuth){
-      this.getLoggedUser();
-    }
+    // if(isAuth){
+    //   this.getLoggedUser();
+    // }
     return isAuth;
   }
 
