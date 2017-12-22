@@ -9,9 +9,6 @@ export class ListAllMessages {
 
   constructor(gs: GeoService) {
     this.geoService = gs;
-    this.geoService.getMessagePosts();
-    this.messagePosts = gs.messagePosts;
-    console.log("all messages");
-    console.log("all messages: " + this.messagePosts);
+    this.messagePosts = this.geoService.messagePosts;
   }
 }
