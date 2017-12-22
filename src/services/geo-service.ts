@@ -22,6 +22,7 @@ export class GeoService {
     if(this.isAuthenticated()){
       this.getLoggedUser();
       this.getMessagePosts();
+      this.getCaches();
     }
   }
 
