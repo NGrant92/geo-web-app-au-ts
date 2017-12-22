@@ -49,7 +49,7 @@ export class GeoService {
 
   getMessagePosts() {
     this.ac.get("api/messages").then(res => {
-      this.messagePosts = res.content;
+      this.messagePosts = res.content as Array<MessagePost>;
     });
   }
 
