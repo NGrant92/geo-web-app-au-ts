@@ -19,10 +19,10 @@ export class GeoService {
     this.ea = ea;
     this.ac = ac;
 
-    //For when app is reloading
-    // if(this.isAuthenticated()){
-    //   this.getLoggedUser();
-    // }
+    if(this.isAuthenticated()){
+      this.getLoggedUser();
+      this.getMessagePosts();
+    }
   }
 
   getLoggedUser(){
@@ -44,13 +44,14 @@ export class GeoService {
   getCaches() {
     this.ac.get("/api/caches").then(res => {
       this.caches = res.content;
+      console.log("caches retrieved");
     });
   }
 
   getMessagePosts() {
     this.ac.get("/api/messages").then(res => {
       this.messagePosts = res.content;
-      console.log("messages retrieved")
+      console.log("messages retrieved");
     });
   }
 

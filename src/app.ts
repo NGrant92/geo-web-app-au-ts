@@ -19,7 +19,6 @@ export class App {
       this.router.reset();
       if (msg.status === true) {
         au.setRoot('home');
-
       } else {
         au.setRoot('app');
       }
