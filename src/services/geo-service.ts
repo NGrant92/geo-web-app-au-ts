@@ -30,9 +30,8 @@ export class GeoService {
 
   getLoggedUser(){
       this.ac.get("/api/users/current").then(res => {
-        console.log("got logged uer");
         this.currUser = res.content as User;
-
+        console.log("got logged uer: " + this.currUser.firstName);
         this.ea.publish(new CurrentUser(this.currUser));
       });
   }

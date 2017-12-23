@@ -8,7 +8,7 @@ export class Dashboard {
 
   constructor(gs: GeoService) {
     this.geoService = gs;
-    // this.geoService.getLoggedUser();
+    this.geoService.getLoggedUser();
     // this.geoService.getMessagePosts();
   }
 

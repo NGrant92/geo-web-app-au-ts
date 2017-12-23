@@ -12,11 +12,17 @@ export class ProfileCard{
 
   constructor(gs: GeoService, ea: EventAggregator){
     this.geoService = gs;
+    this.ea = ea;
     //this.user = this.geoService.currUser;
 
     ea.subscribe(CurrentUser, msg => {
-      this.user = msg.currUser;
-    })
+      this.user = msg.currUser as User;
+      console.log("message user: ");
+      console.log(msg.currUser.firstName);
+
+    });
+    //console.log("profile user: ");
+    //console.log(this.user.firstName);
 
   }
 }
