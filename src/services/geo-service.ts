@@ -23,6 +23,7 @@ export class GeoService {
       this.getLoggedUser();
       this.getMessagePosts();
       this.getCaches();
+      this.getUsers();
     }
   }
 
