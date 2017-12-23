@@ -5,6 +5,7 @@ import AsyncHttpClient from "./async-http-client";
 import { EventAggregator } from "aurelia-event-aggregator";
 import { LoginStatus } from "./messages";
 import { Cache, MessagePost, User } from "./models";
+import { CurrentUser } from "./messages";
 
 @inject(Fixtures, EventAggregator, AsyncHttpClient)
 export class GeoService {
@@ -31,6 +32,8 @@ export class GeoService {
       this.ac.get("/api/users/current").then(res => {
         console.log("got logged uer");
         this.currUser = res.content as User;
+
+        this.ea.publish(new CurrentUser(this.currUser));
       });
   }
 
