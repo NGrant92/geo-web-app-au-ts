@@ -1,8 +1,10 @@
 <template>
   <div class="ui list">
     <h3 class="ui dividing header">Users</h3>
-    <div id="list" class="item" repeat.for="user of userList">
-      <img class="ui avatar image" src=${user.user.img}/>
+
+    <!--https://ilikekillnerds.com/2015/08/iterating-objects-using-repeat-for-in-aurelia/-->
+    <div id="list" class="item" repeat.for="[id, user] of userList">
+      <img class="ui avatar image" src=${user.img}/>
       <div class="content">
         <a class="Header" href="/viewuser/${user.email}"> ${user.firstName} ${user.lastName}</a>
         <a class="description">${user.email}</a>
