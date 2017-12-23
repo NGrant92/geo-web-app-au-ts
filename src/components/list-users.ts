@@ -10,12 +10,11 @@ export class ListUserMessages {
   constructor(gs: GeoService) {
     this.geoService = gs;
 
-    this.userList = this.geoService.users;
-    console.log(this.userList.size);
-
-    // const users = res.content as Array<User>;
-    // users.forEach(user => {
-    //   this.userList.set(user.email.toString(), user);
-    // });
+    const users = this.geoService.users;
+    users.forEach(user => {
+      if(!user.admin){
+        this.userList.set(user.email.toString(), user);
+      }
+    });
   }
 }
