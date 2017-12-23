@@ -1,4 +1,4 @@
-import {MessagePost} from "./models";
+import {MessagePost, User} from "./models";
 
 export class LoginStatus {
   status: boolean;
@@ -15,5 +15,13 @@ export class UserMessagePosts {
 
   constructor(messageList: Array<MessagePost>){
     this.messageList = messageList
+  }
+}
+
+export class CurrentUser{
+  currUser: User;
+
+  constructor(currUser: User){
+    this.currUser = currUser;
   }
 }
