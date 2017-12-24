@@ -23,5 +23,6 @@ export class CurrentUser{
 
   constructor(currUser: User){
     this.currUser = currUser;
+    console.log("EA CurrUser published");
   }
 }
