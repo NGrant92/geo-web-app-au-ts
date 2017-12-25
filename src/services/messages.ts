@@ -36,3 +36,16 @@ export class Caches{
     console.log("EA CacheList published");
   }
 }
+
+export class Users {
+  userMap: Map<string, User>;
+
+  constructor(userMap: Map<string, User>){
+    const users = userMap;
+    users.forEach(user => {
+      if(!user.admin){
+        this.userMap.set(user.email.toString(), user);
+      }
+    });
+  }
+}
