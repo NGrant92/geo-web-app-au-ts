@@ -71,8 +71,10 @@ export class GeoService {
     this.ac
       .post("/api/messages", newMessagePost)
       .then(res => {
-        this.messagePosts.push(res.content);
+        this.messagePosts.unshift(res.content);
         console.log("Message successfully posted");
+
+        this.ea.publish(new MessagePosts(this.messagePosts));
       })
       .catch(err => {
         console.log(err);
