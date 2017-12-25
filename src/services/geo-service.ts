@@ -93,8 +93,9 @@ export class GeoService {
     this.ac
       .post("/api/caches", newCache)
       .then(res => {
-        this.caches.push(res.content);
+        this.caches.unshift(res.content);
         console.log(`${newName} added successfully`);
+        this.ea.publish(new Caches(this.caches));
       })
       .catch(err => {
         console.log(err);
@@ -114,7 +115,8 @@ export class GeoService {
     this.ac
       .post('/api/users', newUser)
       .then(res => {
-        this.getUsers();
+        this.users.set(res.content.email.toString(), res.content);
+        this.ea.publish(new Users(this.users));
         console.log(`${newFirstName} ${newLastName} added successfully`);
       })
       .catch(err => {
