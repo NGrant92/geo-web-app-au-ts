@@ -38,7 +38,7 @@ export class Caches{
 }
 
 export class Users {
-  userMap: Map<string, User>;
+  userMap: Map<string, User> = new Map();
 
   constructor(userMap: Map<string, User>){
     const users = userMap;
@@ -47,5 +47,6 @@ export class Users {
         this.userMap.set(user.email.toString(), user);
       }
     });
+    console.log("EA Userlist published");
   }
 }
