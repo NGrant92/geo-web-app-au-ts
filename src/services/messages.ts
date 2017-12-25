@@ -1,4 +1,4 @@
-import {MessagePost, User} from "./models";
+import {MessagePost, User, Cache} from "./models";
 
 export class LoginStatus {
   status: boolean;
@@ -14,7 +14,8 @@ export class MessagePosts {
   messageList: Array<MessagePost>;
 
   constructor(messageList: Array<MessagePost>){
-    this.messageList = messageList
+    this.messageList = messageList;
+    console.log("EA MessageList published");
   }
 }
 
@@ -24,5 +25,14 @@ export class CurrentUser{
   constructor(currUser: User){
     this.currUser = currUser;
     console.log("EA CurrUser published");
+  }
+}
+
+export class Caches{
+  cacheList: Array<Cache>;
+
+  constructor(cacheList: Array<Cache>){
+    this.cacheList = cacheList;
+    console.log("EA CacheList published");
   }
 }
