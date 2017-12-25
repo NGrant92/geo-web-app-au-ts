@@ -54,7 +54,7 @@ export class GeoService {
 
   getMessagePosts() {
     this.ac.get("/api/messages").then(res => {
-      this.messagePosts = res.content as Array<MessagePost>;
+      this.messagePosts = res.content;
       console.log("messages retrieved");
       this.ea.publish(new UserMessagePosts(this.messagePosts));
     });

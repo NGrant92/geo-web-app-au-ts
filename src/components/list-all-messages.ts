@@ -1,14 +1,20 @@
 import { inject } from 'aurelia-framework';
 import { GeoService } from '../services/geo-service';
-import { MessagePost } from "../services/models";
+import { EventAggregator } from 'aurelia-event-aggregator';
+import {MessagePost, User} from "../services/models";
+import { UserMessagePosts } from "../services/messages";
 
-@inject(GeoService)
+@inject(GeoService, EventAggregator)
 export class ListAllMessages {
   geoService: GeoService;
   allMessagePosts: Array<MessagePost>;
 
-  constructor(gs: GeoService) {
+  constructor(gs: GeoService, ea: EventAggregator) {
     this.geoService = gs;
-    this.allMessagePosts = this.geoService.messagePosts;
+
+    ea.subscribe(UserMessagePosts, msg => {
+      this.allMessagePosts = msg.messageList;
+      console.log("Message Posts subcription called");
+    });
   }
 }
