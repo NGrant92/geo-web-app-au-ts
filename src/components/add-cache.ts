@@ -5,11 +5,12 @@ import { GeoService } from '../services/geo-service';
 export class AddCache {
   geoService: GeoService;
 
-  name = '';
-  location = '';
-  latitude = '0';
-  longitude = '0';
-  description = '';
+  //test text to be removed
+  name = 'Under the Tree';
+  location = 'At Spar';
+  latitude = '11';
+  longitude = '22';
+  description = 'Just like the jingle';
 
   constructor(gs: GeoService) {
     this.geoService = gs;

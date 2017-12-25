@@ -1,0 +1,9 @@
+<template>
+  <form submit.trigger="addMessagePost()" class="ui form">
+      <div class="field">
+        <label>Description</label>
+        <textarea  value.bind="message" rows="4" maxlength="140" placeholder="Description here..." required>Test Description</textarea>
+      </div>
+    <button class="ui blue submit button"><i class="edit icon"></i>Post</button>
+  </form>
+</template>

@@ -7,7 +7,7 @@ export class Home {
     config.map([
       {
         route: ['', 'home'],
-        name: 'geo',
+        name: 'dashboard',
         moduleId: 'components/dashboard',
         nav: true,
         title: 'Home',

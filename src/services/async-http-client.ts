@@ -2,7 +2,6 @@ import { inject } from "aurelia-framework";
 import { HttpClient } from "aurelia-http-client";
 import { EventAggregator } from "aurelia-event-aggregator";
 import { LoginStatus } from './messages';
-import { User } from './models';
 import Fixtures from "./fixtures";
 
 @inject(HttpClient, Fixtures, EventAggregator)
@@ -53,7 +52,7 @@ export default class AsyncHttpClient {
 
   isAuthenticated() {
     let authenticated = false;
-    if (localStorage.geo !== 'null') {
+    if ("geo" in localStorage && localStorage.geo !== 'null') {
       authenticated = true;
       this.http.configure(http => {
         const auth = JSON.parse(localStorage.geo);

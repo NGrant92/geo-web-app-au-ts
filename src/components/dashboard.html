@@ -1,12 +1,50 @@
 <template>
-
-  <section class="ui grid segment">
-    <div class="four wide column">
-      <compose view-model="./add-cache"></compose>
+  <div class="ui equal width padded grid">
+    <div class = "four wide column">
+      <compose view-model="./profile-card"></compose>
     </div>
-    <div class="four wide column">
-      <compose class="four wide column" view-model="./login"></compose>
-    </div>
-  </section>
 
+    <div class = "eight wide align right column" >
+      <section class="ui segment" id="postTabs" style="overflow:auto;max-height:1200px;min-height:200px;">
+        <h3 class="ui dividing header">Post New Stuff!</h3>
+        <div class="ui pointing secondary demo menu">
+          <a class="active item" data-tab="postfirst"><i class="plus icon"></i>Cache</a>
+          <a class="item" data-tab="postsecond"><i class="plus icon"></i>Message Post</a>
+        </div>
+        <div class="ui active tab" data-tab="postfirst" style="padding: 10px;">
+          <compose view-model="./add-cache"></compose>
+        </div>
+        <div class="ui tab" data-tab="postsecond" style="padding: 10px;">
+          <compose view-model="./add-message"></compose>
+        </div>
+      </section>
+      <section class="ui segment" id="timelineTabs" style="overflow:auto;max-height:1200px;min-height:200px;">
+        <h3 class="ui dividing header">Timeline</h3>
+        <div class="ui pointing secondary demo menu">
+          <a class="active item" data-tab="timelinefirst"><i class="users icon"></i>Messages</a>
+          <a class="item" data-tab="timelinesecond"><i class="user icon"></i>My Messages</a>
+          <a class="item" data-tab="timelinethird"><i class="marker icon"></i>Caches</a>
+          <a class="item" data-tab="timelinefourth"><i class="marker icon"></i>My caches</a>
+        </div>
+        <div class="ui active tab" data-tab="timelinefirst" style="padding: 10px;">
+          <compose view-model="./list-all-messages"></compose>
+        </div>
+        <div class="ui tab" data-tab="timelinesecond" style="padding: 10px;">
+          <compose view-model="./list-user-messages"></compose>
+        </div>
+        <div class="ui tab" data-tab="timelinethird" style="padding: 10px;">
+          <compose view-model="./list-all-caches"></compose>
+        </div>
+        <div class="ui tab" data-tab="timelinefourth" style="padding: 10px;">
+          <compose view-model="./list-user-caches"></compose>
+        </div>
+      </section>
+    </div>
+
+    <div class = "four wide align right column padded">
+      <section class="ui raised segment">
+        <compose view-model="./list-users"></compose>
+      </section>
+    </div>
+  </div>
 </template>

@@ -3,23 +3,37 @@ import Fixtures from "./fixtures";
 import AsyncHttpClient from "./async-http-client";
 
 import { EventAggregator } from "aurelia-event-aggregator";
-import { LoginStatus } from "./messages";
+import {LoginStatus, Users} from "./messages";
 import { Cache, MessagePost, User } from "./models";
+import { CurrentUser, MessagePosts, Caches } from "./messages";
 
 @inject(Fixtures, EventAggregator, AsyncHttpClient)
 export class GeoService {
   ea: EventAggregator;
   ac: AsyncHttpClient;
   users: Map<string, User> = new Map();
+  currUser: User;
   caches: Array<Cache> = [];
   messagePosts: Array<MessagePost> = [];
 
   constructor(data: Fixtures, ea: EventAggregator, ac: AsyncHttpClient) {
     this.ea = ea;
     this.ac = ac;
-    // this.getUsers();
-    // this.getCaches();
-    // this.getMessagePosts();
+
+    // if(this.isAuthenticated()){
+    //   this.getLoggedUser();
+    //   this.getMessagePosts();
+    //   this.getCaches();
+    //   this.getUsers();
+    // }
+  }
+
+  getLoggedUser(){
+      this.ac.get("/api/users/current").then(res => {
+        this.currUser = res.content as User;
+        console.log("got logged uer: " + this.currUser.firstName);
+        this.ea.publish(new CurrentUser(this.currUser));
+      });
   }
 
   getUsers() {
@@ -28,32 +42,39 @@ export class GeoService {
       users.forEach(user => {
         this.users.set(user.email.toString(), user);
       });
+
+      this.ea.publish(new Users(this.users));
     });
   }
 
   getCaches() {
     this.ac.get("/api/caches").then(res => {
       this.caches = res.content;
+      console.log("caches retrieved");
+      this.ea.publish(new Caches(this.caches));
     });
   }
 
   getMessagePosts() {
-    this.ac.get("api/messages").then(res => {
+    this.ac.get("/api/messages").then(res => {
       this.messagePosts = res.content;
+      console.log("messages retrieved");
+      this.ea.publish(new MessagePosts(this.messagePosts));
     });
   }
 
-  addMessagePost(newMessage: string, newOwner: User) {
+  addMessagePost(newMessage: string) {
     const newMessagePost = {
-      message: newMessage,
-      owner: newOwner
+      message: newMessage
     };
 
     this.ac
       .post("/api/messages", newMessagePost)
       .then(res => {
-        this.caches.push(res.content);
+        this.messagePosts.unshift(res.content);
         console.log("Message successfully posted");
+
+        this.ea.publish(new MessagePosts(this.messagePosts));
       })
       .catch(err => {
         console.log(err);
@@ -72,8 +93,9 @@ export class GeoService {
     this.ac
       .post("/api/caches", newCache)
       .then(res => {
-        this.caches.push(res.content);
+        this.caches.unshift(res.content);
         console.log(`${newName} added successfully`);
+        this.ea.publish(new Caches(this.caches));
       })
       .catch(err => {
         console.log(err);
@@ -93,7 +115,8 @@ export class GeoService {
     this.ac
       .post('/api/users', newUser)
       .then(res => {
-        this.getUsers();
+        this.users.set(res.content.email.toString(), res.content);
+        this.ea.publish(new Users(this.users));
         console.log(`${newFirstName} ${newLastName} added successfully`);
       })
       .catch(err => {
@@ -107,11 +130,16 @@ export class GeoService {
       password: password,
     };
     this.ac.authenticate('/api/users/authenticate', user);
+    this.getLoggedUser();
     console.log(`User logged in`);
   }
 
   isAuthenticated() {
-    return this.ac.isAuthenticated();
+    const isAuth = this.ac.isAuthenticated();
+    // if(isAuth){
+    //   this.getLoggedUser();
+    // }
+    return isAuth;
   }
 
   logout() {

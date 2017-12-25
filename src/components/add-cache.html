@@ -1,22 +1,28 @@
 <template>
-  <form submit.trigger="addCache()" class="ui form segment">
-    <h3 class='ui dividing header'>Add a Cache</h3>
-    <div class="grouped inline fields">
+  <form submit.trigger="addCache()" class="ui form">
+    <div class="two fields">
       <div class="field">
-        <label>Name</label> <input type="text" value.bind="name" required/>
+        <label>Name</label>
+        <input type="text" value.bind="name" required>
       </div>
       <div class="field">
-        <label>Location</label> <input type="text" value.bind="location" required/>
+        <label>Location</label>
+        <input type="text" value.bind="location" required/>
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>Latitude</label>
+        <input type="number" value.bind="latitude" required/>
       </div>
       <div class="field">
-        <label>Latitude</label> <input type="number" value.bind="latitude" required/>
+        <label>Longitude</label>
+        <input type="number" value.bind="longitude" required/>
       </div>
-      <div class="field">
-        <label>Longitude</label> <input type="number" value.bind="longitude" required/>
-      </div>
-      <div class="field">
-        <label>Description</label> <input type="text" value.bind="description" required/>
-      </div>
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea  value.bind="description" rows="2" maxlength="140" placeholder="Description here..." required>Test Description</textarea>
     </div>
     <button class="ui blue submit button"><i class="edit icon"></i>Add Cache</button>
   </form>

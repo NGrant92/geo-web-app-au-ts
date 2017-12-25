@@ -1,0 +1,9 @@
+<template>
+  <div class="ui segment" repeat.for="post of allMessagePosts">
+    <div class="five wide item">
+      <img class="ui two wide avatar image" src=${post.user.img}/>
+      <a class="Header"> ${post.user.firstName} ${post.user.lastName}</a>
+      <p style="word-break:break-all;white-space:normal;">${post.message}</p>
+    </div>
+  </div>
+</template>

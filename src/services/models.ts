@@ -14,12 +14,12 @@ export interface Cache {
   latitude: Number,
   longitude: Number,
   description: String,
-  owner: User,
+  user: User,
   _id?: string;
 }
 
 export interface MessagePost {
   message: String,
-  owner: User,
+  user: User,
   _id?: string;
 }
