@@ -14,8 +14,7 @@ export class ProfileCard{
 
     ea.subscribe(CurrentUser, msg => {
       this.user = msg.currUser as User;
-      console.log("message user: ");
-      console.log(msg.currUser.firstName);
+      console.log("Current User EA subscription called");
     });
   }
 }
