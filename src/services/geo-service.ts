@@ -5,7 +5,7 @@ import AsyncHttpClient from "./async-http-client";
 import { EventAggregator } from "aurelia-event-aggregator";
 import { LoginStatus } from "./messages";
 import { Cache, MessagePost, User } from "./models";
-import { CurrentUser } from "./messages";
+import { CurrentUser, UserMessagePosts } from "./messages";
 
 @inject(Fixtures, EventAggregator, AsyncHttpClient)
 export class GeoService {
@@ -54,8 +54,9 @@ export class GeoService {
 
   getMessagePosts() {
     this.ac.get("/api/messages").then(res => {
-      this.messagePosts = res.content;
+      this.messagePosts = res.content as Array<MessagePost>;
       console.log("messages retrieved");
+      this.ea.publish(new UserMessagePosts(this.messagePosts));
     });
   }
 
