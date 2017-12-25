@@ -20,12 +20,12 @@ export class GeoService {
     this.ea = ea;
     this.ac = ac;
 
-    if(this.isAuthenticated()){
-      this.getLoggedUser();
-      this.getMessagePosts();
-      this.getCaches();
-      this.getUsers();
-    }
+    // if(this.isAuthenticated()){
+    //   this.getLoggedUser();
+    //   this.getMessagePosts();
+    //   this.getCaches();
+    //   this.getUsers();
+    // }
   }
 
   getLoggedUser(){

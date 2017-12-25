@@ -10,6 +10,8 @@ export class Dashboard {
     this.geoService = gs;
     this.geoService.getLoggedUser();
     this.geoService.getMessagePosts();
+    this.geoService.getCaches();
+    this.geoService.getUsers();
   }
 
   attached(){
