@@ -12,12 +12,6 @@ export class ListUserCaches {
   constructor(gs: GeoService, ea: EventAggregator) {
     this.geoService = gs;
 
-    this.geoService.caches.forEach(cache => {
-      if(cache.user._id === this.geoService.currUser._id){
-        this.userCaches.push(cache);
-      }
-    });
-
     ea.subscribe(Caches, msg => {
       msg.cacheList.forEach(cache => {
         if(cache.user._id === this.geoService.currUser._id){
