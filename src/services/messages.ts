@@ -10,7 +10,7 @@ export class LoginStatus {
   }
 }
 
-export class UserMessagePosts {
+export class MessagePosts {
   messageList: Array<MessagePost>;
 
   constructor(messageList: Array<MessagePost>){

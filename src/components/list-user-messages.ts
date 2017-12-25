@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { GeoService } from '../services/geo-service';
-import { UserMessagePosts } from "../services/messages";
+import { MessagePosts } from "../services/messages";
 import { MessagePost } from "../services/models";
 
 @inject(GeoService, EventAggregator)
@@ -12,7 +12,7 @@ export class ListUserMessages {
   constructor(gs: GeoService, ea: EventAggregator) {
     this.geoService = gs;
 
-    ea.subscribe(UserMessagePosts, msg => {
+    ea.subscribe(MessagePosts, msg => {
       msg.messageList.forEach(post => {
         if(post.user._id === this.geoService.currUser._id){
           this.userMessagePosts.push(post);
