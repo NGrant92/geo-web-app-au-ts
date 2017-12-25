@@ -18,7 +18,7 @@ export class ListUserMessages {
           this.userMessagePosts.push(post);
         }
       });
-      console.log("User Message Posts subcription called");
+      console.log("User Message Posts subscription called");
     });
   }
 }

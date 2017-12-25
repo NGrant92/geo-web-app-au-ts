@@ -1,14 +1,20 @@
 import { inject } from 'aurelia-framework';
 import { GeoService } from '../services/geo-service';
+import { EventAggregator } from 'aurelia-event-aggregator';
+import { Caches } from "../services/messages";
 import { Cache } from "../services/models";
 
-@inject(GeoService)
+@inject(GeoService, EventAggregator)
 export class ListAllCaches {
   geoService: GeoService;
   allCaches: Array<Cache>;
 
-  constructor(gs: GeoService) {
+  constructor(gs: GeoService, ea: EventAggregator) {
     this.geoService = gs;
-    this.allCaches = this.geoService.caches;
+
+    ea.subscribe(Caches, msg => {
+      this.allCaches = msg.cacheList;
+      console.log("Caches subscription called");
+    });
   }
 }
