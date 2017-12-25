@@ -3,7 +3,7 @@ import Fixtures from "./fixtures";
 import AsyncHttpClient from "./async-http-client";
 
 import { EventAggregator } from "aurelia-event-aggregator";
-import { LoginStatus } from "./messages";
+import {LoginStatus, Users} from "./messages";
 import { Cache, MessagePost, User } from "./models";
 import { CurrentUser, MessagePosts, Caches } from "./messages";
 
@@ -42,6 +42,8 @@ export class GeoService {
       users.forEach(user => {
         this.users.set(user.email.toString(), user);
       });
+
+      this.ea.publish(new Users(this.users));
     });
   }
 
