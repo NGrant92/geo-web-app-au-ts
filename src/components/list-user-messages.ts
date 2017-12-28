@@ -22,6 +22,7 @@ export class ListUserMessages {
       console.log("User Message Posts subscription called");
     });
 
+    //used for when dashboard-view-user.ts is called so it correctly loads
     ea.subscribe(GetUser, msg => {
       this.userMessagePosts  = [];
       this.geoService.messagePosts.forEach(post => {
@@ -29,7 +30,7 @@ export class ListUserMessages {
           this.userMessagePosts.push(post);
         }
       });
-      console.log("User Message Posts subscription called");
+      console.log("GetUser Message Posts subscription called");
     });
   }
 }
