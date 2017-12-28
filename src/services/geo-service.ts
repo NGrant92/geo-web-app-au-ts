@@ -13,6 +13,7 @@ export class GeoService {
   ac: AsyncHttpClient;
   users: Map<string, User> = new Map();
   currUser: User;
+  viewUser: User;
   caches: Array<Cache> = [];
   messagePosts: Array<MessagePost> = [];
 
@@ -26,6 +27,13 @@ export class GeoService {
       this.currUser = res.content as User;
       console.log("got logged uer: " + this.currUser.firstName);
       this.ea.publish(new CurrentUser(this.currUser));
+    });
+  }
+
+  getUser(id: string){
+    this.ac.get("/api/users/" + id).then(res => {
+      this.viewUser = res.content as User;
+      console.log("User found: " + this.viewUser.firstName);
     });
   }
 
