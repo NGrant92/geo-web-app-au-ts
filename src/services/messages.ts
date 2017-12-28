@@ -28,6 +28,15 @@ export class CurrentUser{
   }
 }
 
+export class GetUser{
+  getUser: User;
+
+  constructor(getUser: User){
+    this.getUser = getUser;
+    console.log("EA viewUser published");
+  }
+}
+
 export class Caches{
   cacheList: Array<Cache>;
 
