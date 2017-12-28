@@ -29,10 +29,10 @@ export class CurrentUser{
 }
 
 export class GetUser{
-  getUser: User;
+  foundUser: User;
 
-  constructor(getUser: User){
-    this.getUser = getUser;
+  constructor(foundUser: User){
+    this.foundUser = foundUser;
     console.log("EA viewUser published");
   }
 }
