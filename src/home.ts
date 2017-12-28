@@ -22,7 +22,7 @@ export class Home {
       {
         route: 'viewuser',
         name: 'viewuser',
-        moduleId: 'components/view-user-dashboard',
+        moduleId: 'components/dashboard-view-user',
         nav: false,
         title: 'View User',
       },
