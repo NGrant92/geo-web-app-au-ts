@@ -14,7 +14,7 @@ export class ListUserMessages {
 
     ea.subscribe(MessagePosts, msg => {
       msg.messageList.forEach(post => {
-        if(post.user._id === this.geoService.currUser._id){
+        if(post.user._id === this.geoService.foundUser._id){
           this.userMessagePosts.push(post);
         }
       });
