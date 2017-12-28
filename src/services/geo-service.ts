@@ -25,8 +25,9 @@ export class GeoService {
   getLoggedUser() {
     this.ac.get("/api/users/current").then(res => {
       this.currUser = res.content as User;
+      this.foundUser = res.content as User;
       console.log("got logged uer: " + this.currUser.firstName);
-      this.ea.publish(new CurrentUser(this.currUser));
+      this.ea.publish(new GetUser(this.currUser));
     });
   }
 

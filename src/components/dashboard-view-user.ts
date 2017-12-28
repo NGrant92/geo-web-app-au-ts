@@ -19,7 +19,7 @@ export class DashboardViewUser {
 
     ea.subscribe(GetUser, msg => {
       this.user = msg.foundUser as User;
-      console.log("Current User EA subscription called");
+      console.log("Found User EA subscription called");
     });
   }
 
