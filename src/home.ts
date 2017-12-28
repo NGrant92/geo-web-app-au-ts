@@ -20,7 +20,7 @@ export class Home {
         title: 'Logout',
       },
       {
-        route: 'viewuser',
+        route: 'viewuser/:userid',
         name: 'viewuser',
         moduleId: 'components/dashboard-view-user',
         nav: false,
