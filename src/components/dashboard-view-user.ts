@@ -3,7 +3,7 @@ import { inject } from 'aurelia-framework';
 import { GeoService } from '../services/geo-service';
 
 @inject(GeoService)
-export class Dashboard {
+export class DashboardViewUser {
   geoService: GeoService;
 
   constructor(gs: GeoService) {
