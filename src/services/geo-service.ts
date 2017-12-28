@@ -5,7 +5,7 @@ import AsyncHttpClient from "./async-http-client";
 import { EventAggregator } from "aurelia-event-aggregator";
 import {LoginStatus, Users, GetUser} from "./messages";
 import { Cache, MessagePost, User } from "./models";
-import { CurrentUser, MessagePosts, Caches } from "./messages";
+import { MessagePosts, Caches } from "./messages";
 
 @inject(Fixtures, EventAggregator, AsyncHttpClient)
 export class GeoService {
