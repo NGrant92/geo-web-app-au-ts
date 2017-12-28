@@ -23,7 +23,7 @@ export class Home {
         route: 'viewuser',
         name: 'viewuser',
         moduleId: 'components/view-user-dashboard',
-        nav: true,
+        nav: false,
         title: 'View User',
       },
     ]);

@@ -5,7 +5,7 @@
     <div id="list" class="item" repeat.for="[id, user] of userList">
       <img class="ui avatar image" src=${user.img}/>
       <div class="content">
-        <a class="Header" href="/viewuser/${user.email}"> ${user.firstName} ${user.lastName}</a>
+        <a class="Header" route-href="route: viewuser"> ${user.firstName} ${user.lastName}</a>
         <a class="description">${user.email}</a>
       </div>
     </div>
