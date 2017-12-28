@@ -135,11 +135,7 @@ export class GeoService {
   }
 
   isAuthenticated() {
-    const isAuth = this.ac.isAuthenticated();
-    // if(isAuth){
-    //   this.getLoggedUser();
-    // }
-    return isAuth;
+    return this.ac.isAuthenticated();;
   }
 
   logout() {
