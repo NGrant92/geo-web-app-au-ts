@@ -14,7 +14,7 @@ export class ListUserCaches {
 
     ea.subscribe(Caches, msg => {
       msg.cacheList.forEach(cache => {
-        if(cache.user._id === this.geoService.currUser._id){
+        if(cache.user._id === this.geoService.foundUser._id){
           this.userCaches.push(cache);
         }
       });
