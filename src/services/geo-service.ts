@@ -3,7 +3,7 @@ import Fixtures from "./fixtures";
 import AsyncHttpClient from "./async-http-client";
 
 import { EventAggregator } from "aurelia-event-aggregator";
-import {LoginStatus, Users} from "./messages";
+import { LoginStatus, Users } from "./messages";
 import { Cache, MessagePost, User } from "./models";
 import { CurrentUser, MessagePosts, Caches } from "./messages";
 
@@ -19,21 +19,14 @@ export class GeoService {
   constructor(data: Fixtures, ea: EventAggregator, ac: AsyncHttpClient) {
     this.ea = ea;
     this.ac = ac;
-
-    // if(this.isAuthenticated()){
-    //   this.getLoggedUser();
-    //   this.getMessagePosts();
-    //   this.getCaches();
-    //   this.getUsers();
-    // }
   }
 
-  getLoggedUser(){
-      this.ac.get("/api/users/current").then(res => {
-        this.currUser = res.content as User;
-        console.log("got logged uer: " + this.currUser.firstName);
-        this.ea.publish(new CurrentUser(this.currUser));
-      });
+  getLoggedUser() {
+    this.ac.get("/api/users/current").then(res => {
+      this.currUser = res.content as User;
+      console.log("got logged uer: " + this.currUser.firstName);
+      this.ea.publish(new CurrentUser(this.currUser));
+    });
   }
 
   getUsers() {
@@ -81,13 +74,19 @@ export class GeoService {
       });
   }
 
-  addCache(newName: string, newLocation: string, newLat: Number, newLong: Number, newDesc: string) {
+  addCache(
+    newName: string,
+    newLocation: string,
+    newLat: Number,
+    newLong: Number,
+    newDesc: string
+  ) {
     const newCache = {
       name: newName,
       location: newLocation,
       latitude: newLat,
       longitude: newLong,
-      description: newDesc,
+      description: newDesc
     };
 
     this.ac
@@ -108,12 +107,13 @@ export class GeoService {
       lastName: newLastName,
       email: newEmail,
       password: newPassword,
-      img: "http://res.cloudinary.com/ngrant/image/upload/v1513088924/white-pin-green-back_iy4fax.png",
+      img:
+        "http://res.cloudinary.com/ngrant/image/upload/v1513088924/white-pin-green-back_iy4fax.png",
       admin: false
     };
 
     this.ac
-      .post('/api/users', newUser)
+      .post("/api/users", newUser)
       .then(res => {
         this.users.set(res.content.email.toString(), res.content);
         this.ea.publish(new Users(this.users));
@@ -121,21 +121,21 @@ export class GeoService {
       })
       .catch(err => {
         console.log(err);
-      })
+      });
   }
 
   login(email: string, password: string) {
     const user = {
       email: email,
-      password: password,
+      password: password
     };
-    this.ac.authenticate('/api/users/authenticate', user);
+    this.ac.authenticate("/api/users/authenticate", user);
     this.getLoggedUser();
     console.log(`User logged in`);
   }
 
   isAuthenticated() {
-    return this.ac.isAuthenticated();;
+    return this.ac.isAuthenticated();
   }
 
   logout() {
