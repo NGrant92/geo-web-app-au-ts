@@ -5,6 +5,7 @@
     <div id="list" class="item" repeat.for="[id, user] of userList">
       <img class="ui avatar image" src=${user.img}/>
       <div class="content">
+        <!--https://elanderson.net/2015/10/aurelia-routing-with-a-parameter/-->
         <a class="Header" route-href="route: viewuser; params.bind: { userid:user._id }">
           ${user.firstName} ${user.lastName}</a>
         <a class="description">${user.email}</a>
