@@ -5,9 +5,9 @@ import { GeoService } from '../services/geo-service';
 export class Signup {
   geoService: GeoService;
 
-  firstName = 'Marge';
+  firstName = 'Lisa';
   lastName = 'Simpson';
-  email = 'marge@simpson.com';
+  email = 'lisa@simpson.com';
   password = 'secret';
 
   constructor(gs: GeoService) {

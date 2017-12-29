@@ -18,5 +18,13 @@ export class Dashboard {
     $(document).ready(function(){
       $('.menu .item').tab({history:false});
     });
+
+    $('.ui.accordion').accordion();
+
+    $('.trigger.example .accordion').accordion({
+      selector: {
+        trigger: '.title .icon'
+      }
+    });
   }
 }
