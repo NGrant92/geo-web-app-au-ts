@@ -18,16 +18,4 @@ export class ListAllCaches {
       console.log("Caches subscription called");
     });
   }
-
-  attached(){
-    $(document).ready(function(){
-      $('.ui .accordion').accordion();
-    });
-
-    $('.trigger .example .accordion').accordion({
-      selector: {
-        trigger: '.title .icon'
-      }
-    });
-  }
 }
