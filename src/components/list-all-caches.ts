@@ -1,4 +1,5 @@
 import { inject } from 'aurelia-framework';
+import * as $ from 'jquery';
 import { GeoService } from '../services/geo-service';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { Caches } from "../services/messages";
@@ -15,6 +16,18 @@ export class ListAllCaches {
     ea.subscribe(Caches, msg => {
       this.allCaches = msg.cacheList;
       console.log("Caches subscription called");
+    });
+  }
+
+  attached(){
+    $(document).ready(function(){
+      $('.ui .accordion').accordion();
+    });
+
+    $('.trigger .example .accordion').accordion({
+      selector: {
+        trigger: '.title .icon'
+      }
     });
   }
 }

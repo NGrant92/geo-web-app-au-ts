@@ -1,4 +1,4 @@
-import * as $ from 'jquery'
+import * as $ from 'jquery';
 import { inject } from 'aurelia-framework';
 import { GeoService } from '../services/geo-service';
 
@@ -17,14 +17,6 @@ export class Dashboard {
   attached(){
     $(document).ready(function(){
       $('.menu .item').tab({history:false});
-    });
-
-    $('.ui.accordion').accordion();
-
-    $('.trigger.example .accordion').accordion({
-      selector: {
-        trigger: '.title .icon'
-      }
     });
   }
 }
