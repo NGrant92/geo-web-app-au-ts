@@ -5,6 +5,8 @@ export interface User {
   password: String,
   img: String,
   admin: Boolean,
+  followers: Array<User>,
+  following: Array<User>,
   _id?: string;
 }
 
