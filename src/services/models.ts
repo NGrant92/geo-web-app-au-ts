@@ -5,8 +5,6 @@ export interface User {
   password: String,
   img: String,
   admin: Boolean,
-  followers: Array<User>,
-  following: Array<User>,
   _id?: string;
 }
 
@@ -16,6 +14,7 @@ export interface Cache {
   latitude: Number,
   longitude: Number,
   description: String,
+  visitors: Number,
   user: User,
   _id?: string;
 }
@@ -23,5 +22,11 @@ export interface Cache {
 export interface MessagePost {
   message: String,
   user: User,
+  _id?: string;
+}
+
+export interface Following {
+  follower: User,
+  followee: User,
   _id?: string;
 }
