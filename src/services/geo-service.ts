@@ -4,7 +4,7 @@ import AsyncHttpClient from "./async-http-client";
 
 import { EventAggregator } from "aurelia-event-aggregator";
 import {LoginStatus, Users, GetUser} from "./messages";
-import { Cache, MessagePost, User } from "./models";
+import {Cache, Following, MessagePost, User} from "./models";
 import { MessagePosts, Caches } from "./messages";
 
 @inject(Fixtures, EventAggregator, AsyncHttpClient)
@@ -13,6 +13,7 @@ export class GeoService {
   ac: AsyncHttpClient;
   users: Map<string, User> = new Map();
   currUser: User;
+  currUserFollowers: Array<Following> = [];
   foundUser: User;
   caches: Array<Cache> = [];
   messagePosts: Array<MessagePost> = [];
@@ -29,6 +30,10 @@ export class GeoService {
       console.log("got logged uer: " + this.currUser.firstName);
       this.ea.publish(new GetUser(this.currUser));
     });
+
+    this.ac.get("/api/following/" + this.currUser._id).then(res => {
+      this.currUserFollowers = res.content as Array<Following>;
+    })
   }
 
   getUser(id: string){
