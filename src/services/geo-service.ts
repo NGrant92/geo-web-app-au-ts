@@ -25,8 +25,10 @@ export class GeoService {
 
   getLoggedUser() {
     this.ac.get("/api/users/current").then(res => {
-      this.currUser = res.content as User;
-      this.foundUser = res.content as User;
+      const content: User = res.content as User;
+      this.currUser = content;
+      this.foundUser = content;
+      this.getFollowers(content._id);
       console.log("got logged uer: " + this.currUser.firstName);
       this.ea.publish(new GetUser(this.currUser));
     });
@@ -43,6 +45,7 @@ export class GeoService {
   getUser(id: string){
     this.ac.get("/api/users/" + id).then(res => {
       this.foundUser = res.content as User;
+      this.getFollowers(id);
       console.log("User found: " + this.foundUser.firstName);
       this.ea.publish(new GetUser(this.foundUser));
     });
