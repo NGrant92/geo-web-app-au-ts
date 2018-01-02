@@ -8,20 +8,20 @@ import {Following, User} from '../services/models';
 export class ProfileCard{
   geoService: GeoService;
   user = null;
-  loggedUser = null;
+  isLoggedUser: boolean = false;
   followerList: Array<Following>;
 
   constructor(gs: GeoService, ea: EventAggregator){
     this.geoService = gs;
 
     ea.subscribe(GetUser, msg => {
-      this.user = msg.foundUser as User;
-      console.log("Get User EA subscription called");
-    });
+      const foundUser = msg.foundUser as User;
+      this.user = foundUser;
 
-    ea.subscribe(CurrentUser, msg => {
-      this.loggedUser = msg.currUser as User;
-      console.log("Current User EA subscription called");
+      if(foundUser === this.geoService.currUser){
+        this.isLoggedUser = true;
+      }
+      console.log("Get User EA subscription called");
     });
 
     ea.subscribe(CurrUserFollowers, msg => {
