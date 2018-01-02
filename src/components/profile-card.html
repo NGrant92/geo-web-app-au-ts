@@ -27,24 +27,10 @@
           <td class="collapsing">
             <i class="users icon"></i>
           </td>
-          <td>${followerList.length}</td>
+          <td>${followerList.length} followers</td>
         </tr>
         </tbody>
       </table>
-    </div>
-  </div>
-
-  <div class="ui segment">
-    <h3 class="ui dividing header">Followers</h3>
-    <div class="ui list">
-      <div id="list" class="item" repeat.for="following of followerList">
-        <div class="content">
-          <img class="ui avatar image" src=${following.follower.img}/>
-          <!--https://elanderson.net/2015/10/aurelia-routing-with-a-parameter/-->
-          <a class="Header" route-href="route: viewuser; params.bind: { userid:following.follower._id }">
-            ${following.follower.firstName} ${following.follower.lastName}</a>
-        </div>
-      </div>
     </div>
   </div>
 </template>
