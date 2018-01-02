@@ -8,7 +8,7 @@ import {Following, User} from '../services/models';
 export class ProfileCard{
   geoService: GeoService;
   user = null;
-  followers: Array<Following> = [];
+  followers: Array<Following>;
 
   constructor(gs: GeoService, ea: EventAggregator){
     this.geoService = gs;
