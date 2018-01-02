@@ -11,7 +11,6 @@ export class DashboardViewUser {
     this.geoService.getMessagePosts();
     this.geoService.getCaches();
     this.geoService.getUsers();
-    this.geoService.getFollowers();
   }
 
   attached(){
@@ -23,5 +22,6 @@ export class DashboardViewUser {
   //https://stackoverflow.com/a/43857642
   activate(params){
     this.geoService.getUser(params.userid);
+    this.geoService.getFollowers(params.userid);
   }
 }

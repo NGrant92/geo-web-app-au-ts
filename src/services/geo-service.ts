@@ -32,8 +32,8 @@ export class GeoService {
     });
   }
 
-  getFollowers(){
-    this.ac.get("/api/followers/" + this.foundUser._id).then(res => {
+  getFollowers(id: string){
+    this.ac.get("/api/followers/" + id).then(res => {
       this.currUserFollowers = res.content as Array<Following>;
       console.log("got user followers");
       this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
