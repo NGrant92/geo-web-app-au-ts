@@ -8,7 +8,7 @@ import {Following, User} from '../services/models';
 export class ProfileCard{
   geoService: GeoService;
   user = null;
-  followers: Array<Following>;
+  followerList: Array<Following>;
 
   constructor(gs: GeoService, ea: EventAggregator){
     this.geoService = gs;
@@ -19,7 +19,7 @@ export class ProfileCard{
     });
 
     ea.subscribe(CurrUserFollowers, msg => {
-      this.followers = msg.followerList;
+      this.followerList = msg.followerList;
       console.log("Curr User Followers EA subscription called");
     });
   }
