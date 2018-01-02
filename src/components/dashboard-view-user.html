@@ -21,8 +21,17 @@
     </div>
 
     <div class = "four wide align right column padded">
-      <section class="ui raised segment">
-        <compose view-model="./list-users"></compose>
+      <section class="ui raised segment" id="userlistTabs">
+        <div class="ui pointing secondary demo menu">
+          <a class="active item" data-tab="userfirst"><i class="users icon"></i>Followers</a>
+          <a class="item" data-tab="usersecond"><i class="world icon"></i>All Users</a>
+        </div>
+        <div class="ui active tab" data-tab="userfirst" style="padding: 10px;">
+          <compose view-model="./list-user-followers"></compose>
+        </div>
+        <div class="ui tab" data-tab="usersecond" style="padding: 10px;">
+          <compose view-model="./list-users"></compose>
+        </div>
       </section>
     </div>
   </div>
