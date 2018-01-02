@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div>
-    <button class="ui ${isLoggedUser ? 'hidden' : 'fluid'} blue submit button" ><i class="user icon"></i>Follow</button>
+  <div if.bind="!isLoggedUser">
+    <button class="ui fluid blue submit button" ><i class="user icon"></i>Follow</button>
   </div>
 </template>
