@@ -30,8 +30,6 @@ export class GeoService {
       console.log("got logged uer: " + this.currUser.firstName);
       this.ea.publish(new GetUser(this.currUser));
     });
-
-    this.getFollowers();
   }
 
   getFollowers(){
