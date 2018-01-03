@@ -22,6 +22,9 @@ export class ProfileCard{
       if(foundUser._id === this.geoService.currUser._id){
         this.isLoggedUser = true;
       }
+      else{
+        this.isLoggedUser = false;
+      }
     });
 
     ea.subscribe(CurrUserFollowers, msg => {
