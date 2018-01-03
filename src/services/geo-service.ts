@@ -111,9 +111,12 @@ export class GeoService {
 
     this.ac.post("/api/following", following)
       .then( res => {
-        this.currUserFollowers.push(res.content);
+        this.currUserFollowers.push(res.content.follower);
         console.log("follower added");
         this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
+
+        this.currUserFollowees.push(res.content.followee);
+        this.ea.publish(new CurrUserFollowees(this.currUserFollowees));
       })
       .catch(err => {
         console.log(err);
