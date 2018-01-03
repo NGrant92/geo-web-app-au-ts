@@ -28,9 +28,7 @@ export class ProfileCard{
       //looping through the logged in user's list of people they're following to see
       //if logged user is following the person they're viewing
       this.isFollowing = false;
-      console.log(this.geoService.currUserFollowees);
       for(let followee of this.geoService.currUserFollowees){
-        console.log(followee.firstName);
         if(followee._id === foundUser._id){
           return this.isFollowing = true;
         }
@@ -48,5 +46,9 @@ export class ProfileCard{
 
   addFollowing(){
     this.geoService.addFollower(this.user._id);
+  }
+
+  removeFollowing(){
+    this.geoService.removeFollower(this.user._id);
   }
 }
