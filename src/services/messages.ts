@@ -33,7 +33,16 @@ export class CurrUserFollowees {
 
   constructor(followeeList: Array<User>){
     this.followeeList = followeeList;
-    console.log("EA followeeList published");
+    console.log("EA current user followeeList published");
+  }
+}
+
+export class FoundUserFollowees {
+  followeeList: Array<User>;
+
+  constructor(followeeList: Array<User>){
+    this.followeeList = followeeList;
+    console.log("EA found user followeeList published");
   }
 }
 
