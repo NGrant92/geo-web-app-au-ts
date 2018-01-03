@@ -33,7 +33,8 @@
     </div>
   </div>
 
-  <div>
-    <button if.bind="!isLoggedUser" class="ui fluid blue submit button" ><i class="user icon"></i>Follow</button>
+  <div if.bind="!isLoggedUser">
+    <button if.bind="!isFollowing" class="ui fluid blue submit button" ><i class="user icon"></i>Follow</button>
+    <button if.bind="isFollowing" class="ui fluid submit button" ><i class="user icon"></i>Unfollow</button>
   </div>
 </template>

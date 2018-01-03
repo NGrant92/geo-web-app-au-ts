@@ -9,6 +9,7 @@ export class ProfileCard{
   geoService: GeoService;
   user = null;
   isLoggedUser: boolean = false;
+  isFollowing: boolean = false;
   followerList: Array<Following>;
 
   constructor(gs: GeoService, ea: EventAggregator){
@@ -18,7 +19,7 @@ export class ProfileCard{
       const foundUser = msg.foundUser as User;
       this.user = foundUser;
 
-      if(foundUser === this.geoService.currUser){
+      if(foundUser._id === this.geoService.currUser._id){
         this.isLoggedUser = true;
       }
       console.log("Get User EA subscription called");
