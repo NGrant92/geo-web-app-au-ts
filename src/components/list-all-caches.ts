@@ -1,5 +1,4 @@
 import { inject } from 'aurelia-framework';
-import * as $ from 'jquery';
 import { GeoService } from '../services/geo-service';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { Caches } from "../services/messages";

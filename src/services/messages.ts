@@ -19,9 +19,9 @@ export class MessagePosts {
   }
 }
 export class CurrUserFollowers {
-  followerList: Array<Following>;
+  followerList: Array<User>;
 
-  constructor(followerList: Array<Following>){
+  constructor(followerList: Array<User>){
     this.followerList = followerList;
     console.log("EA followerList published");
   }

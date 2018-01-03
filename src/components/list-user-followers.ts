@@ -7,7 +7,7 @@ import {Following, User} from '../services/models';
 @inject(GeoService, EventAggregator)
 export class ProfileCard{
   geoService: GeoService;
-  followerList: Array<Following>;
+  followerList: Array<User>;
 
   constructor(gs: GeoService, ea: EventAggregator){
     this.geoService = gs;
