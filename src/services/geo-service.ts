@@ -3,7 +3,7 @@ import Fixtures from "./fixtures";
 import AsyncHttpClient from "./async-http-client";
 
 import { EventAggregator } from "aurelia-event-aggregator";
-import {LoginStatus, Users, GetUser} from "./messages";
+import {LoginStatus, Users, GetUser, CurrUserFollowees} from "./messages";
 import {Cache, Following, MessagePost, User} from "./models";
 import { MessagePosts, Caches, CurrUserFollowers } from "./messages";
 
@@ -14,6 +14,7 @@ export class GeoService {
   users: Map<string, User> = new Map();
   currUser: User;
   currUserFollowers: Array<User>;
+  currUserFollowees: Array<User>;
   foundUser: User;
   caches: Array<Cache> = [];
   messagePosts: Array<MessagePost> = [];
@@ -29,26 +30,36 @@ export class GeoService {
       this.currUser = content;
       this.foundUser = content;
       this.getFollowers(content._id);
+      this.getFollowees(content._id);
       console.log("got logged uer: " + this.currUser.firstName);
       this.ea.publish(new GetUser(this.currUser));
     });
-  }
-
-  getFollowers(id: string){
-    this.ac.get("/api/following/" + id).then(res => {
-      this.currUserFollowers = res.content as Array<User>;
-      console.log("got user followers");
-      this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
-    })
   }
 
   getUser(id: string){
     this.ac.get("/api/users/" + id).then(res => {
       this.foundUser = res.content as User;
       this.getFollowers(id);
+      this.getFollowees(id);
       console.log("User found: " + this.foundUser.firstName);
       this.ea.publish(new GetUser(this.foundUser));
     });
+  }
+
+  getFollowers(id: string){
+    this.ac.get("/api/following/followers/" + id).then(res => {
+      this.currUserFollowers = res.content as Array<User>;
+      console.log("got user followers");
+      this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
+    })
+  }
+
+  getFollowees(id: string){
+    this.ac.get("/api/following/followees/" + id).then(res => {
+      this.currUserFollowees = res.content as Array<User>;
+      console.log("got user followers");
+      this.ea.publish(new CurrUserFollowees(this.currUserFollowees));
+    })
   }
 
   getUsers() {

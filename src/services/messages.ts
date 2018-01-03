@@ -18,12 +18,22 @@ export class MessagePosts {
     console.log("EA MessageList published");
   }
 }
+
 export class CurrUserFollowers {
   followerList: Array<User>;
 
   constructor(followerList: Array<User>){
     this.followerList = followerList;
     console.log("EA followerList published");
+  }
+}
+
+export class CurrUserFollowees {
+  followeeList: Array<User>;
+
+  constructor(followeeList: Array<User>){
+    this.followeeList = followeeList;
+    console.log("EA followeeList published");
   }
 }
 
