@@ -35,7 +35,7 @@ export class GeoService {
   }
 
   getFollowers(id: string){
-    this.ac.get("/api/followers/" + id).then(res => {
+    this.ac.get("/api/following/" + id).then(res => {
       this.currUserFollowers = res.content as Array<User>;
       console.log("got user followers");
       this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
@@ -77,10 +77,10 @@ export class GeoService {
     });
   }
 
-  addFollower(followerId: string, followeeId: string){
+  addFollower(followeeId: string){
     const following = {
-      followerId: followerId,
-      followeeId: followeeId
+      follower: this.currUser._id,
+      followee: followeeId
     };
 
     this.ac.post("/api/following", following)

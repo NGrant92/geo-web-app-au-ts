@@ -28,4 +28,8 @@ export class ProfileCard{
       this.followerList = msg.followerList;
     });
   }
+
+  addFollowing(){
+    this.geoService.addFollower(this.user._id);
+  }
 }
