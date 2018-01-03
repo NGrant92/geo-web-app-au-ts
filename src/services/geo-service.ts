@@ -120,6 +120,18 @@ export class GeoService {
       });
   }
 
+  removeFollower(followeeId: string){
+
+    this.ac.delete("/api/following" + followeeId)
+      .then(res => {
+        this.getCurrUserFollowees();
+        console.log("Unfollowed person");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   addMessagePost(newMessage: string) {
     const newMessagePost = {
       message: newMessage
