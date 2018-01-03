@@ -37,8 +37,6 @@ export class GeoService {
   getFollowers(id: string){
     this.ac.get("/api/followers/" + id).then(res => {
       this.currUserFollowers = res.content as Array<User>;
-      console.log(res.content[0].firstName);
-      console.log(this.currUserFollowers);
       console.log("got user followers");
       this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
     })
@@ -59,7 +57,6 @@ export class GeoService {
       users.forEach(user => {
         this.users.set(user.email.toString(), user);
       });
-
       this.ea.publish(new Users(this.users));
     });
   }
@@ -78,6 +75,23 @@ export class GeoService {
       console.log("messages retrieved");
       this.ea.publish(new MessagePosts(this.messagePosts));
     });
+  }
+
+  addFollower(followerId: string, followeeId: string){
+    const following = {
+      followerId: followerId,
+      followeeId: followeeId
+    };
+
+    this.ac.post("/api/following", following)
+      .then( res => {
+        this.currUserFollowers.push(res.content);
+        console.log("follower added");
+        this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   addMessagePost(newMessage: string) {
