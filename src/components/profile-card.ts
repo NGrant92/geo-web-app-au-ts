@@ -22,12 +22,10 @@ export class ProfileCard{
       if(foundUser._id === this.geoService.currUser._id){
         this.isLoggedUser = true;
       }
-      console.log("Get User EA subscription called");
     });
 
     ea.subscribe(CurrUserFollowers, msg => {
       this.followerList = msg.followerList;
-      console.log("Curr User Followers EA subscription called");
     });
   }
 }

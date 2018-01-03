@@ -19,7 +19,6 @@ export class ListUserCaches {
           this.userCaches.push(cache);
         }
       });
-      console.log("User Caches subscription called");
     });
 
     //used for when dashboard-view-user.ts is called so it correctly loads
@@ -30,7 +29,6 @@ export class ListUserCaches {
           this.userCaches.push(post);
         }
       });
-      console.log("GetUser Cache Posts subscription called");
     });
   }
 }

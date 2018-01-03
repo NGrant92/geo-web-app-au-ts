@@ -14,7 +14,6 @@ export class ProfileCard{
 
     ea.subscribe(CurrUserFollowers, msg => {
       this.followerList = msg.followerList;
-      console.log("Curr User Followers EA subscription called");
     });
   }
 }

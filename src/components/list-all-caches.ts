@@ -15,7 +15,6 @@ export class ListAllCaches {
 
     ea.subscribe(Caches, msg => {
       this.allCaches = msg.cacheList;
-      console.log("Caches subscription called");
     });
   }
 }

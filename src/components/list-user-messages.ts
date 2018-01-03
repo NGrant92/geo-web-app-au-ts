@@ -19,7 +19,6 @@ export class ListUserMessages {
           this.userMessagePosts.push(post);
         }
       });
-      console.log("User Message Posts subscription called");
     });
 
     //used for when dashboard-view-user.ts is called so it correctly loads
@@ -30,7 +29,6 @@ export class ListUserMessages {
           this.userMessagePosts.push(post);
         }
       });
-      console.log("GetUser Message Posts subscription called");
     });
   }
 }
