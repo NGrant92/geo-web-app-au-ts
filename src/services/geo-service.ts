@@ -3,9 +3,14 @@ import Fixtures from "./fixtures";
 import AsyncHttpClient from "./async-http-client";
 
 import { EventAggregator } from "aurelia-event-aggregator";
-import {LoginStatus, Users, GetUser, CurrUserFollowees} from "./messages";
-import {Cache, MessagePost, User} from "./models";
-import { MessagePosts, Caches, CurrUserFollowers, FoundUserFollowees } from "./messages";
+import { LoginStatus, Users, GetUser, CurrUserFollowees } from "./messages";
+import { Cache, MessagePost, User } from "./models";
+import {
+  MessagePosts,
+  Caches,
+  CurrUserFollowers,
+  FoundUserFollowees
+} from "./messages";
 
 @inject(Fixtures, EventAggregator, AsyncHttpClient)
 export class GeoService {
@@ -41,7 +46,7 @@ export class GeoService {
     });
   }
 
-  getUser(id: string){
+  getUser(id: string) {
     this.ac.get("/api/users/" + id).then(res => {
       this.foundUser = res.content as User;
       this.getFollowers(id);
@@ -51,28 +56,28 @@ export class GeoService {
     });
   }
 
-  getFollowers(id: string){
+  getFollowers(id: string) {
     this.ac.get("/api/following/followers/" + id).then(res => {
       this.userFollowers = res.content as Array<User>;
       console.log("got user followers");
       this.ea.publish(new CurrUserFollowers(this.userFollowers));
-    })
+    });
   }
 
-  getFollowees(id: string){
+  getFollowees(id: string) {
     this.ac.get("/api/following/followees/" + id).then(res => {
       this.foundUserFollowees = res.content as Array<User>;
       console.log("got user followers");
       this.ea.publish(new FoundUserFollowees(this.foundUserFollowees));
-    })
+    });
   }
 
-  getCurrUserFollowees(){
+  getCurrUserFollowees() {
     this.ac.get("/api/following/followees/" + this.currUser._id).then(res => {
       this.currUserFollowees = res.content as Array<User>;
       console.log("got user followers");
       this.ea.publish(new CurrUserFollowees(this.currUserFollowees));
-    })
+    });
   }
 
   getUsers() {
@@ -101,14 +106,15 @@ export class GeoService {
     });
   }
 
-  addFollower(followeeId: string){
+  addFollower(followeeId: string) {
     const following = {
       follower: this.currUser._id,
       followee: followeeId
     };
 
-    this.ac.post("/api/following", following)
-      .then( res => {
+    this.ac
+      .post("/api/following", following)
+      .then(res => {
         this.userFollowers.push(res.content.follower);
         console.log("follower added");
         this.ea.publish(new CurrUserFollowers(this.userFollowers));
@@ -121,11 +127,12 @@ export class GeoService {
       });
   }
 
-  removeFollower(followeeId: string){
-
-    this.ac.delete("/api/following" + followeeId)
+  removeFollower(followeeId: string) {
+    this.ac
+      .delete("/api/following/" + followeeId)
       .then(res => {
         this.getCurrUserFollowees();
+        this.getFollowers(followeeId);
         console.log("Unfollowed person");
       })
       .catch(err => {
