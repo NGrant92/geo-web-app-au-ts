@@ -1,4 +1,4 @@
-import {MessagePost, User, Cache} from "./models";
+import {MessagePost, User, Cache, Following} from "./models";
 
 export class LoginStatus {
   status: boolean;
@@ -19,6 +19,33 @@ export class MessagePosts {
   }
 }
 
+export class CurrUserFollowers {
+  followerList: Array<User>;
+
+  constructor(followerList: Array<User>){
+    this.followerList = followerList;
+    console.log("EA followerList published");
+  }
+}
+
+export class CurrUserFollowees {
+  followeeList: Array<User>;
+
+  constructor(followeeList: Array<User>){
+    this.followeeList = followeeList;
+    console.log("EA current user followeeList published");
+  }
+}
+
+export class FoundUserFollowees {
+  followeeList: Array<User>;
+
+  constructor(followeeList: Array<User>){
+    this.followeeList = followeeList;
+    console.log("EA found user followeeList published");
+  }
+}
+
 export class CurrentUser{
   currUser: User;
 
@@ -28,12 +55,39 @@ export class CurrentUser{
   }
 }
 
+export class GetUser{
+  foundUser: User;
+
+  constructor(foundUser: User){
+    this.foundUser = foundUser;
+    console.log("EA viewUser published");
+  }
+}
+
 export class Caches{
   cacheList: Array<Cache>;
 
   constructor(cacheList: Array<Cache>){
     this.cacheList = cacheList;
     console.log("EA CacheList published");
+  }
+}
+
+export class FolloweeCaches{
+  followeeCaches: Array<Cache>;
+
+  constructor(followeeCaches: Array<Cache>){
+    this.followeeCaches = followeeCaches;
+    console.log("EA followeeCaches published");
+  }
+}
+
+export class FolloweeMessages{
+  followeeMessages: Array<MessagePost>;
+
+  constructor(followeeMessages: Array<MessagePost>){
+    this.followeeMessages = followeeMessages;
+    console.log("EA followeeMessages published");
   }
 }
 

@@ -1,0 +1,13 @@
+<template>
+  <div class="ui list">
+    <div id="list" class="item" repeat.for="follower of followerList">
+      <img class="ui avatar image" src=${follower.img}/>
+      <div class="content">
+        <!--https://elanderson.net/2015/10/aurelia-routing-with-a-parameter/-->
+        <a class="Header" route-href="route: viewuser; params.bind: { userid:follower._id }">
+          ${follower.firstName} ${follower.lastName}</a>
+        <a class="description">${follower.email}</a>
+      </div>
+    </div>
+  </div>
+</template>

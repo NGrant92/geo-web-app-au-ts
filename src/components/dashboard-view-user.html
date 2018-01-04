@@ -1,0 +1,38 @@
+<template>
+  <div class="ui equal width padded grid">
+    <div class = "four wide column">
+      <compose view-model="./profile-card"></compose>
+    </div>
+
+    <div class = "eight wide align right column" >
+      <section class="ui segment" id="timelineTabs" style="overflow:auto;max-height:1200px;min-height:200px;">
+        <h3 class="ui dividing header">Activity</h3>
+        <div class="ui pointing secondary demo menu">
+          <a class="active item" data-tab="timelinefirst"><i class="users icon"></i>Messages</a>
+          <a class="item" data-tab="timelinesecond"><i class="marker icon"></i>Caches</a>
+        </div>
+        <div class="ui active tab" data-tab="timelinefirst" style="padding: 10px;">
+          <compose view-model="./list-user-messages"></compose>
+        </div>
+        <div class="ui tab" data-tab="timelinesecond" style="padding: 10px;">
+          <compose view-model="./list-user-caches"></compose>
+        </div>
+      </section>
+    </div>
+
+    <div class = "four wide align right column padded">
+      <section class="ui raised segment" id="userlistTabs">
+        <div class="ui pointing secondary demo menu">
+          <a class="active item" data-tab="userfirst"><i class="users icon"></i>Followers</a>
+          <a class="item" data-tab="usersecond"><i class="world icon"></i>All Users</a>
+        </div>
+        <div class="ui active tab" data-tab="userfirst" style="padding: 10px;">
+          <compose view-model="./list-user-followers"></compose>
+        </div>
+        <div class="ui tab" data-tab="usersecond" style="padding: 10px;">
+          <compose view-model="./list-users"></compose>
+        </div>
+      </section>
+    </div>
+  </div>
+</template>

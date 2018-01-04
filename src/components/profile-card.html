@@ -18,12 +18,30 @@
         <tbody>
         <tr>
           <td class="collapsing">
-            Email
+            <i class="at icon"></i>
           </td>
           <td>${user.email}</td>
+        </tr>
+        <tr>
+          <td class="collapsing">
+            <i class="users icon"></i>
+          </td>
+          <td>
+            Followers: ${followerList.length}
+            <br>
+            Following: ${followeeList.length}
+          </td>
         </tr>
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div if.bind="!isLoggedUser">
+    <button if.bind="!isUserFollowing" click.delegate="addFollowing()" class="ui fluid blue submit button" >
+      <i class="user icon"></i>Follow</button>
+
+    <button if.bind="isUserFollowing" click.delegate="removeFollowing()" class="ui fluid submit button" >
+      <i class="user icon"></i>Unfollow</button>
   </div>
 </template>

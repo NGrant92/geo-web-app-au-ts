@@ -19,6 +19,13 @@ export class Home {
         nav: true,
         title: 'Logout',
       },
+      {
+        route: 'viewuser/:userid',
+        name: 'viewuser',
+        moduleId: 'components/dashboard-view-user',
+        nav: false,
+        title: 'View User',
+      },
     ]);
     this.router = router;
   }

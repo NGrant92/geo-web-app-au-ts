@@ -14,7 +14,6 @@ export class ListAllMessages {
 
     ea.subscribe(MessagePosts, msg => {
       this.allMessagePosts = msg.messageList;
-      console.log("Message Posts subscription called");
     });
   }
 }

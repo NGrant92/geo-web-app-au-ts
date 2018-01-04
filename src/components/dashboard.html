@@ -18,32 +18,60 @@
           <compose view-model="./add-message"></compose>
         </div>
       </section>
-      <section class="ui segment" id="timelineTabs" style="overflow:auto;max-height:1200px;min-height:200px;">
+      <section class="ui segment" id="timelineParentTabs" style="overflow:auto;max-height:1200px;min-height:200px;">
         <h3 class="ui dividing header">Timeline</h3>
         <div class="ui pointing secondary demo menu">
-          <a class="active item" data-tab="timelinefirst"><i class="users icon"></i>Messages</a>
-          <a class="item" data-tab="timelinesecond"><i class="user icon"></i>My Messages</a>
-          <a class="item" data-tab="timelinethird"><i class="marker icon"></i>Caches</a>
-          <a class="item" data-tab="timelinefourth"><i class="marker icon"></i>My caches</a>
+          <a class="fluid active item" data-tab="timelineparentfirst"><i class="comments icon"></i>Messages</a>
+          <a class="fluid wide item" data-tab="timelineparentsecond"><i class="marker icon"></i>Caches</a>
         </div>
-        <div class="ui active tab" data-tab="timelinefirst" style="padding: 10px;">
-          <compose view-model="./list-all-messages"></compose>
-        </div>
-        <div class="ui tab" data-tab="timelinesecond" style="padding: 10px;">
-          <compose view-model="./list-user-messages"></compose>
-        </div>
-        <div class="ui tab" data-tab="timelinethird" style="padding: 10px;">
-          <compose view-model="./list-all-caches"></compose>
-        </div>
-        <div class="ui tab" data-tab="timelinefourth" style="padding: 10px;">
-          <compose view-model="./list-user-caches"></compose>
+
+        <div class="ui active tab" data-tab="timelineparentfirst" style="padding: 10px;">
+          <div class="ui pointing secondary demo menu">
+            <a class="active item" data-tab="messagesfirst"><i class="world icon"></i>All Messages</a>
+            <a class="item" data-tab="messagessecond"><i class="users icon"></i>Following Messages</a>
+            <a class="item" data-tab="messagesthird"><i class="user icon"></i>My Messages</a>
+          </div>
+          <div class="ui active tab" data-tab="messagesfirst" style="padding: 10px;">
+            <compose view-model="./list-all-messages"></compose>
+          </div>
+          <div class="ui tab" data-tab="messagessecond" style="padding: 10px;">
+            <compose view-model="./list-followee-messages"></compose>
+          </div>
+          <div class="ui tab" data-tab="messagesthird" style="padding: 10px;">
+            <compose view-model="./list-user-messages"></compose>
+          </div>
+      </div>
+        <div class="ui tab" data-tab="timelineparentsecond" style="padding: 10px;">
+          <div class="ui pointing secondary demo menu">
+            <a class="item" data-tab="cachesfirst"><i class="world icon"></i>All Caches</a>
+            <a class="item" data-tab="cachessecond"><i class="users icon"></i>Following Caches</a>
+            <a class="item" data-tab="cachesthird"><i class="user icon"></i>My Caches</a>
+          </div>
+          <div class="ui active tab" data-tab="cachesfirst" style="padding: 10px;">
+            <compose view-model="./list-all-caches"></compose>
+          </div>
+          <div class="ui tab" data-tab="cachessecond" style="padding: 10px;">
+            <compose view-model="./list-followee-caches"></compose>
+          </div>
+          <div class="ui tab" data-tab="cachesthird" style="padding: 10px;">
+            <compose view-model="./list-user-caches"></compose>
+          </div>
         </div>
       </section>
     </div>
 
     <div class = "four wide align right column padded">
-      <section class="ui raised segment">
-        <compose view-model="./list-users"></compose>
+      <section class="ui raised segment" id="userlistTabs">
+        <div class="ui pointing secondary demo menu">
+        <a class="active item" data-tab="userfirst"><i class="users icon"></i>Followers</a>
+        <a class="item" data-tab="usersecond"><i class="world icon"></i>All Users</a>
+      </div>
+        <div class="ui active tab" data-tab="userfirst" style="padding: 10px;">
+          <compose view-model="./list-user-followers"></compose>
+        </div>
+        <div class="ui tab" data-tab="usersecond" style="padding: 10px;">
+          <compose view-model="./list-users"></compose>
+        </div>
       </section>
     </div>
   </div>
