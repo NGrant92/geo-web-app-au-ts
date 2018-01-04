@@ -11,6 +11,7 @@ export class Dashboard {
     this.geoService.getLoggedUser();
     this.geoService.getMessagePosts();
     this.geoService.getCaches();
+    this.geoService.getFolloweeCaches();
     this.geoService.getUsers();
   }
 

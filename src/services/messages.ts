@@ -73,6 +73,15 @@ export class Caches{
   }
 }
 
+export class FolloweeCaches{
+  followeeCaches: Array<Cache>;
+
+  constructor(followeeCaches: Array<Cache>){
+    this.followeeCaches = followeeCaches;
+    console.log("EA followeeCaches published");
+  }
+}
+
 export class Users {
   userMap: Map<string, User> = new Map();
 

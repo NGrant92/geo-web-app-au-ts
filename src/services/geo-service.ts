@@ -3,7 +3,7 @@ import Fixtures from "./fixtures";
 import AsyncHttpClient from "./async-http-client";
 
 import { EventAggregator } from "aurelia-event-aggregator";
-import { LoginStatus, Users, GetUser, CurrUserFollowees } from "./messages";
+import {LoginStatus, Users, GetUser, CurrUserFollowees, FolloweeCaches} from "./messages";
 import { Cache, MessagePost, User } from "./models";
 import {
   MessagePosts,
@@ -98,6 +98,13 @@ export class GeoService {
     });
   }
 
+  getFolloweeCaches() {
+    this.ac.get("/api/caches/following").then(res => {
+      console.log("followee caches retrieved");
+      this.ea.publish(new FolloweeCaches(res.content));
+    });
+  }
+
   getMessagePosts() {
     this.ac.get("/api/messages").then(res => {
       this.messagePosts = res.content;
@@ -125,6 +132,8 @@ export class GeoService {
       .catch(err => {
         console.log(err);
       });
+
+    this.getFolloweeCaches();
   }
 
   removeFollower(followeeId: string) {
@@ -138,6 +147,8 @@ export class GeoService {
       .catch(err => {
         console.log(err);
       });
+
+    this.getFolloweeCaches();
   }
 
   addMessagePost(newMessage: string) {

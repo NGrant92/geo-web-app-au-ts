@@ -7,7 +7,6 @@ import { User } from '../services/models';
 @inject(GeoService, EventAggregator)
 export class ProfileCard{
   geoService: GeoService;
-  //ea: EventAggregator;
   user = null;
   isLoggedUser: boolean = false;
   isUserFollowing: boolean = false;
@@ -16,7 +15,6 @@ export class ProfileCard{
 
   constructor(gs: GeoService, ea: EventAggregator){
     this.geoService = gs;
-    //this.ea = ea;
 
     ea.subscribe(GetUser, msg => {
       this.user = msg.foundUser as User;
@@ -40,16 +38,6 @@ export class ProfileCard{
     ea.subscribe(FoundUserFollowees, msg => {
       this.followeeList = msg.followeeList;
     });
-
-    // ea.subscribe(isFollowing, msg =>{
-    //   this.isUserFollowing = msg.isFollowing;
-    // });
-
-    // ea.subscribe(CurrUserFollowees, msg => {
-    //   this.currUserFolloweeList = msg.currUserFollowees;
-    //
-    //   this.checkFollowing();
-    // })
   }
 
   addFollowing(){
