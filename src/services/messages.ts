@@ -82,6 +82,15 @@ export class FolloweeCaches{
   }
 }
 
+export class FolloweeMessages{
+  followeeMessages: Array<MessagePost>;
+
+  constructor(followeeMessages: Array<MessagePost>){
+    this.followeeMessages = followeeMessages;
+    console.log("EA followeeMessages published");
+  }
+}
+
 export class Users {
   userMap: Map<string, User> = new Map();
 

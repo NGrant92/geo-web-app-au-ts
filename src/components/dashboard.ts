@@ -12,6 +12,7 @@ export class Dashboard {
     this.geoService.getMessagePosts();
     this.geoService.getCaches();
     this.geoService.getFolloweeCaches();
+    this.geoService.getFolloweeMessages();
     this.geoService.getUsers();
   }
 
