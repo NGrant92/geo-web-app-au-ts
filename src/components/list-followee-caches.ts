@@ -7,16 +7,16 @@ import { Cache } from "../services/models";
 @inject(GeoService, EventAggregator)
 export class ListUserCaches {
   geoService: GeoService;
-  userCaches: Array<Cache> = [];
+  followeeCaches: Array<Cache> = [];
 
   constructor(gs: GeoService, ea: EventAggregator) {
     this.geoService = gs;
 
     ea.subscribe(Caches, msg => {
-      this.userCaches = [];
+      this.followeeCaches = [];
       msg.cacheList.forEach(cache => {
         if(cache.user._id === this.geoService.foundUser._id){
-          this.userCaches.push(cache);
+          this.followeeCaches.push(cache);
         }
       });
     });
