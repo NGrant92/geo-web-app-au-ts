@@ -13,12 +13,10 @@ export class GeoService {
   ac: AsyncHttpClient;
   users: Map<string, User> = new Map();
   currUser: User;
-
-  //TODO: change variable name
-  //list of users following a user
-  currUserFollowers: Array<User>;
   //list of users followed by logged in user
   currUserFollowees: Array<User>;
+  //list of users following a user
+  userFollowers: Array<User>;
   foundUser: User;
   //list of users followed logged in user
   foundUserFollowees: Array<User>;
@@ -55,9 +53,9 @@ export class GeoService {
 
   getFollowers(id: string){
     this.ac.get("/api/following/followers/" + id).then(res => {
-      this.currUserFollowers = res.content as Array<User>;
+      this.userFollowers = res.content as Array<User>;
       console.log("got user followers");
-      this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
+      this.ea.publish(new CurrUserFollowers(this.userFollowers));
     })
   }
 
@@ -111,9 +109,9 @@ export class GeoService {
 
     this.ac.post("/api/following", following)
       .then( res => {
-        this.currUserFollowers.push(res.content.follower);
+        this.userFollowers.push(res.content.follower);
         console.log("follower added");
-        this.ea.publish(new CurrUserFollowers(this.currUserFollowers));
+        this.ea.publish(new CurrUserFollowers(this.userFollowers));
 
         this.currUserFollowees.push(res.content.followee);
         this.ea.publish(new CurrUserFollowees(this.currUserFollowees));
