@@ -4,6 +4,10 @@
         <label>Description</label>
         <textarea  value.bind="message" rows="4" maxlength="140" placeholder="Description here..." required>Test Description</textarea>
       </div>
+    <div class="field">
+      <label>Image</label>
+      <input type="file" accept="image/*" files.bind="image"> </input>
+    </div>
     <button class="ui blue submit button"><i class="edit icon"></i>Post</button>
   </form>
 </template>

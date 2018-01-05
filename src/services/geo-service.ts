@@ -158,9 +158,10 @@ export class GeoService {
     this.getFolloweeCaches();
   }
 
-  addMessagePost(newMessage: string) {
+  addMessagePost(newMessage, newImage) {
     const newMessagePost = {
-      message: newMessage
+      message: newMessage,
+      img: newImage
     };
 
     this.ac
@@ -168,7 +169,6 @@ export class GeoService {
       .then(res => {
         this.messagePosts.unshift(res.content);
         console.log("Message successfully posted");
-
         this.ea.publish(new MessagePosts(this.messagePosts));
       })
       .catch(err => {

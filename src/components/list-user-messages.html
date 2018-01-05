@@ -4,6 +4,7 @@
       <img class="ui two wide avatar image" src=${post.user.img}/>
       <a class="Header"> ${post.user.firstName} ${post.user.lastName}</a>
       <p style="word-break:break-all;white-space:normal;">${post.message}</p>
+      <img class="ui ${post.img ? 'fluid' : 'hidden'} image" src=${post.img}/>
     </div>
   </div>
 </template>

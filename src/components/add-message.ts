@@ -7,14 +7,23 @@ export class AddMessage {
 
   //test text to be removed
   message = '';
+  image = [];
 
   constructor(gs: GeoService) {
     this.geoService = gs;
   }
 
   addMessagePost(){
-    this.geoService.addMessagePost(
-      this.message
-    );
+    const reader = new window.FileReader();
+    reader.onload = () => {
+      let file = reader.result;
+      this.geoService.addMessagePost(this.message, file);
+    };
+
+    if (this.image[0]) {
+      reader.readAsDataURL(this.image[0]);
+    } else {
+      this.geoService.addMessagePost(this.message, null);
+    }
   }
 }
