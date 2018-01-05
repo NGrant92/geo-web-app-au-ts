@@ -14,7 +14,7 @@ export class AddMessage {
   }
 
   addMessagePost(){
-    const reader = new window.FileReader();
+    const reader = new (window as any).FileReader();
     reader.onload = () => {
       let file = reader.result;
       this.geoService.addMessagePost(this.message, file);
