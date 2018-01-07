@@ -38,7 +38,7 @@
   </div>
 
   <div if.bind="!isLoggedUser">
-    <button if.bind="!isUserFollowing" click.delegate="addFollowing()" class="ui fluid blue submit button" >
+    <button if.bind="!isUserFollowing" click.delegate="addFollowing()" class="ui fluid blue submit button" style="background-color:#16551C;">
       <i class="user icon"></i>Follow</button>
 
     <button if.bind="isUserFollowing" click.delegate="removeFollowing()" class="ui fluid submit button" >
